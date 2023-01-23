@@ -18,13 +18,13 @@ pipeline{
         }
         stage("deploy-dev"){
             steps{
-                sshagent(['tomcat-new']) {
+                sshagent(['tomcat']) {
                 sh """
-                    scp -o StrictHostKeyChecking=yes target/kcjava-project.jar  ec2-user@172.31.40.93:/home/ec2-user/apache-tomcat-9.0.71/webapps/
+                    scp -o StrictHostKeyChecking=no target/kcjava-project.jar  ec2-user@172.31.36.33:/home/ec2-user/apache-tomcat-9.0.71/webapps/
                     
-                    ssh ec2-user@172.31.40.93 /home/ec2-user/apache-tomcat-9.0.71/bin/shutdown.sh
+                    ssh ec2-user@172.31.36.33 /home/ec2-user/apache-tomcat-9.0.71/bin/shutdown.sh
                     
-                    ssh ec2-user@172.31.40.93 /home/ec2-user/apache-tomcat-9.0.71/bin/startup.sh
+                    ssh ec2-user@172.31.36.33 /home/ec2-user/apache-tomcat-9.0.71/bin/startup.sh
                 
                 """
             }
