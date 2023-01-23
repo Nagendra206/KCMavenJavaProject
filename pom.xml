@@ -114,7 +114,7 @@
             </activation>
             <properties>
                 <sonar.host.url>http://localhost:9000/</sonar.host.url>
-				<sonar-maven-plugin.version>3.3.0.603</sonar-maven-plugin.version>
+		<sonar-maven-plugin.version>3.3.0.603</sonar-maven-plugin.version>
             </properties>
             <build>
               <plugins>
@@ -122,6 +122,14 @@
                     <groupId>org.sonarsource.scanner.maven</groupId>
                     <artifactId>sonar-maven-plugin</artifactId>
                     <version>${sonar-maven-plugin.version}</version>
+                </plugin>
+		<plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                      <source>1.8</source>
+                      <target>1.8</target>
+                    </configuration>
                 </plugin>
               </plugins>
             </build>
