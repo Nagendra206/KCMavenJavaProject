@@ -12,7 +12,7 @@ pipeline{
         }
         stage("Maven Build"){
             steps{
-                sh "mvn clean package"
+                sh "mvn clean sonar:sonar deploy"
                 sh "mv target/*.jar target/kcjava-project.jar"
             }
         }
